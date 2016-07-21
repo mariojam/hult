@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<title>Student Rotation</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/vertical-rhythm.min.css" rel="stylesheet">
+    <script src="js/jquery-2.2.4.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+    <!--fonts-->
+    <style>
+        @font-face{
+        font-family:"Bembo Std";
+        src:url("Fonts/e5488079-e286-434f-a7a2-47bdf487a905.eot?#iefix");
+        src:url("Fonts/e5488079-e286-434f-a7a2-47bdf487a905.eot?#iefix") format("eot"),url("Fonts/317cdafb-860b-4d5e-aef3-bdbdad1385eb.woff2") format("woff2"),url("Fonts/b30aa007-b477-43cc-81eb-d34f48807cb5.woff") format("woff"),url("Fonts/f75d5781-c9d6-4a95-b024-72e1ac96a7e1.ttf") format("truetype"),url("Fonts/e8bd1ce0-6a1d-4c97-a49b-3e771cc9d5ec.svg#e8bd1ce0-6a1d-4c97-a49b-3e771cc9d5ec") format("svg");
+        }
+        @font-face{
+        font-family:"Proxima Nova";
+        font-weight: normal;
+        src:url("Fonts/7e90123f-e4a7-4689-b41f-6bcfe331c00a.eot?#iefix");
+        src:url("Fonts/7e90123f-e4a7-4689-b41f-6bcfe331c00a.eot?#iefix") format("eot"),url("Fonts/64017d81-9430-4cba-8219-8f5cc28b923e.woff2") format("woff2"),url("Fonts/e56ecb6d-da41-4bd9-982d-2d295bec9ab0.woff") format("woff"),url("Fonts/2aff4f81-3e97-4a83-9e6c-45e33c024796.ttf") format("truetype"),url("Fonts/ab9cd062-380f-4b53-b1a7-c0bec7402235.svg#ab9cd062-380f-4b53-b1a7-c0bec7402235") format("svg");
+        }
+        @font-face{
+        font-family:"Proxima Nova";
+        font-weight: 700;
+        src:url("Fonts/87e4b4fc-cdf1-450a-8bed-dd818cba908d.eot?#iefix");
+        src:url("Fonts/87e4b4fc-cdf1-450a-8bed-dd818cba908d.eot?#iefix") format("eot"),url("Fonts/ae47a7f5-89da-4879-b934-29722c3dd451.woff2") format("woff2"),url("Fonts/70ae52ec-d89b-4c6a-9402-854ebe423c54.woff") format("woff"),url("Fonts/6a35571c-ea14-4dac-9ae1-0e7af0abeec8.ttf") format("truetype"),url("Fonts/ac2bdafc-d4a8-49d0-8a10-4e2f16bf7e3c.svg#ac2bdafc-d4a8-49d0-8a10-4e2f16bf7e3c") format("svg");
+        }
+        @font-face{
+        font-family:"Proxima Nova";
+        font-weight: 900;
+        src:url("Fonts/fbc6b03a-b3a1-427c-a884-053deca3a53c.eot?#iefix");
+        src:url("Fonts/fbc6b03a-b3a1-427c-a884-053deca3a53c.eot?#iefix") format("eot"),url("Fonts/0d416408-95c6-4ad7-b08d-e60573d3b37d.woff2") format("woff2"),url("Fonts/d999c07b-a049-4eb5-b8a6-4f36ae25e67e.woff") format("woff"),url("Fonts/4d4a75f5-d32a-4a09-8665-133afd39cc37.ttf") format("truetype"),url("Fonts/8152bc4e-d700-4c78-b6be-326893e6f53f.svg#8152bc4e-d700-4c78-b6be-326893e6f53f") format("svg");
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Modal -->
+    <div class="modal fade" id="modal-for-module" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close btn-top" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Cancel &times;</span></button>
+            <h4 class="modal-title">Select your campus rotation</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row mg-0">
+                <h4 class="module-name"></h4>
+                <div class="col-sm-6 col-xs-12">
+                    <div class="button-wrapper" data-city-name="BOSTON">
+                        <button class="btn-modal boston-bg">
+                            <img src="img/btn.png" class="btn-logo" alt="Select Boston campus"/>
+                        </button>
+                        <p class="button-content-city boston">Boston</p>
+                        <br>
+                        <p class="button-content-country none">United States of America</p>
+                    </div>
+                    <div class="button-wrapper" data-city-name="SANFRANCISCO">
+                        <button class="btn-modal sanfrancisco-bg">
+                            <img src="img/btn.png" class="btn-logo" alt="Select San Francisco campus"/>
+                        </button>
+                        <p class="button-content-city sanfrancisco">San Francisco</p>
+                        <br>
+                        <p class="button-content-country none">United States of America</p>
+                    </div>
+                    <div class="button-wrapper" data-city-name="LONDON">
+                        <button class="btn-modal london-bg">
+                            <img src="img/btn.png" class="btn-logo" alt="Select London campus"/>
+                        </button>
+                        <p class="button-content-city london">London</p>
+                        <br>
+                        <p class="button-content-country none">United Kingdom</p>
+                    </div>
+                    <div class="button-wrapper" data-city-name="DUBAI">
+                        <button class="btn-modal dubai-bg">
+                            <img src="img/btn.png" class="btn-logo" alt="Select Dubai campus"/>
+                        </button>
+                        <p class="button-content-city dubai">Dubai</p>
+                        <br>
+                        <p class="button-content-country none">United Arab Emirates</p>
+                    </div>                    
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <div class="button-wrapper" data-city-name="SHANGHAI">
+                        <button class="btn-modal shanghai-bg">
+                            <img src="img/btn.png" class="btn-logo" alt="Select Shanghai campus"/>
+                        </button>
+                        <p class="button-content-city shanghai">Shanghai</p>
+                        <br>
+                        <p class="button-content-country none">China</p>
+                    </div>
+                    <div class="button-wrapper" data-city-name="NEWYORK">
+                        <button class="btn-modal newyork-bg">
+                            <img src="img/btn.png" class="btn-logo" alt="Select New York campus"/>
+                        </button>
+                        <p class="button-content-city newyork">New York</p>
+                        <br>
+                        <p class="button-content-country none">United States of America</p>
+                    </div>
+                    <div class="button-wrapper" data-city-name="ASHRIDGE">
+                        <button class="btn-modal ashridge-bg">
+                            <img src="img/btn.png" class="btn-logo" alt="Select Ashridge campus"/>
+                        </button>
+                        <p class="button-content-city ashridge">Ashridge</p>
+                        <br>
+                        <p class="button-content-country none">United Kingdom</p>
+                    </div>
+                    <div class="button-wrapper" data-city-name="NO-ROTATION">
+                        <button class="btn-modal none-bg">
+                            <img src="img/btn.png" class="btn-logo" alt="Select no rotation"/>
+                        </button>
+                        <p class="button-content-city none">No rotation</p>
+                        <br>
+                        <p class="button-content-country none">Stay in home campus</p>
+                    </div>
+                </div>
+            </div>
+                
+           </div>
+            <div class="overflow-shadow"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="close btn-bottom" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Cancel &times;</span></button>
+          </div>
+        </div>
+      </div>
+    <div class="wrapper bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <header>
+                        <a href="/"><h1 class="logo">Hult</h1></a>
+                        <nav>
+                            <div>
+                                <ul id="nav1">
+                                    <li id="dashboard"><a href="#"></a></li>
+                                </ul>
+                                <ul id="nav2">
+                                    <li id="notifications"><a href="#"></a></li>
+                                    <li id="jane-doe"><a href="#">Jane Doe</a></li>
+                                    <li id="chevron"><a href="#"></a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <a href="#" class="avatar"></a>
+                        <div class="clearfix"></div>
+                    </header>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-70">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <p class="breadcrumbs">Dashboard <span> \ Rotation setup </span></p>
+                    <h2 class="mt-60 mt-xs-20">Define your rotation experience</h2>
+                    <p class="mt-30">Immerse yourself in up to three of the world’s most exciting cities and gain <br>an invaluable global perspective – all without interrupting your studies.</p>
+                </div>
+            </div>
+            <section class="main row mt-60 mt-xs-40">
+                <div class="col-sm-4 col-xs-12 module_ac">
+                    <h3 class="mb-20">Module A-C <span>(home)</span></h3>
+                    <figure>
+                        <p class="date london-bg">September - May</p>
+                        <div class="caption london-bga">
+                            <p>London</p>
+                            <p>United Kingdom</p>
+                        </div>
+                    </figure>
+                    <div class="description mt--10">
+                        <h3 class="mt-40">Your home campus</h3>
+                        <p class="mt-30">Students can choose from five home campuses – Boston, San Francisco, London, or Dubai. Your home campus is where you complete the core of your studies and where you’ll be based for about ten months of the year. You can choose to stay at your home campus for the entire length of your program if you prefer not to rotate.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12 module_d">
+                    <h3 class="mb-20 mt-xs-40">Module D</h3>
+                    <figure data-hover="1" data-toggle="modal" data-target="#modal-for-module" data-module-name="Available campuses for Module D" data-module-letter="D" class="empty">
+                        <p class="date none">June</p>
+                        <div class="labels"></div>
+                    </figure>
+                    <div class="description">
+                        <h3 class="mt-40">Your first rotation</h3>
+                        <p class="mt-30">In your penultimate module, Module D, you have the option of taking electives and spending six weeks at any of Hult’s home campuses, or our rotation centers in Shanghai and New York. You can choose to stay for the next module and extend your stay to twelve weeks if you prefer to only rotate once.</p>                        
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12 module_e">
+                    <h3 class="mb-20 mt-xs-40">Module E</h3>
+                    <figure data-hover="1" data-toggle="modal" data-target="#modal-for-module" data-module-name="Available campuses for Module E" data-module-letter="E" class="empty">
+                        <p class="date none">August</p>
+                        <div class="labels"></div>
+                    </figure>
+                    <div class="description">
+                        <h3 class="mt-40">Where to next?</h3>
+                        <p class="mt-30">For your final module, Module E, you can choose to take electives and spend six weeks at any of Hult’s seven campuses worldwide. That includes all five of our home campuses, and our rotation centers in Shanghai, New York, and Ashridge Estate, U.K.</p>
+                    </div>    
+                </div>
+            </section>
+        </div>
+        <div class="container mt-90">
+        <div class="pre_footer"></div>
+            <section class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <h2>Want to know more?</h2>
+                    <p class="mt-30 mb-30">Try our a virtual Global Campus Rotation experience, to get a glimpse of <br>how your year with Hult could shape up.</p>
+                    <button class="cta">Try it now!</button>
+                </div>
+            </section>
+
+        </div>
+        <footer class="pb-40">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12">
+                    <a href="#"><img src="img/Logo-footer.png" alt="Hult Logo"></a>
+                        <p class="copyright">Hult International Business School, Inc. is a non-profit corporation organized in the Commonwealth of Massachusetts and accredited by the NEASC.<br>Copyright © 2015 Hult International Business School. All rights reserved. Privacy Policy</p>
+                    </div>                    
+                </div>
+            </div>
+        </footer>        
+
+    </div>
+</body>
+</html>

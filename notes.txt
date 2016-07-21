@@ -1,0 +1,7 @@
+Some considerations:
+
+Some of the campus locations pictures were missing. Used default picture (London) for the others.
+
+London color code on the design doesn't correspond to it's original color code, used the original.
+
+Module D and E are switched on the design.
